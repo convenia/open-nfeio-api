@@ -1,6 +1,7 @@
 {
     "name": "convenia/apen-nfeio",
     "description": "Driver de comunicação com a api open.nfe.io",
+    "license": "MIT",
     "authors": [
         {
             "name": "Victor ventura",
