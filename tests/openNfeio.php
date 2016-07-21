@@ -1,12 +1,12 @@
 <?php
+
 namespace Convenia\tests;
 
-use PHPUnit_Framework_TestCase;
 use Convenia\OpenNfeio\OpenNfeio;
+use PHPUnit_Framework_TestCase;
 
-class tests_openNfeio extends PHPUnit_Framework_TestCase
+class openNfeio extends PHPUnit_Framework_TestCase
 {
-
     public function test_ApiCallTest()
     {
         $obj = new OpenNfeio('api_key');
