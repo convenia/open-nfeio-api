@@ -1,15 +1,9 @@
 <?php
-namespace Convenia\OpenNfeio;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Ring\Client\StreamHandler;
-use GuzzleHttp\Psr7;
-use Convenia\OpenNfeio\Builder;
+namespace Convenia\OpenNfeio;
 
 class OpenNfeio
 {
-
     private $apiKey = null;
     private $baseUrl = 'http://open.nfe.io/v1/';
     private $url = null;
@@ -28,17 +22,19 @@ class OpenNfeio
     {
         $this->urlBuilder($adress, $param);
         $this->results = $this->apiGetResults();
+
         return $this;
     }
 
     public function urlBuilder($adress, $param)
     {
-        $newUrl = '/' . $adress . '/' . $param;
+        $newUrl = '/'.$adress.'/'.$param;
 
         if ($this->url === null) {
-            $newUrl = $this->baseUrl . $adress . '/' . $param;
+            $newUrl = $this->baseUrl.$adress.'/'.$param;
         }
         $this->url = $newUrl;
+
         return $this->url;
     }
 
@@ -49,8 +45,9 @@ class OpenNfeio
 
     public function get()
     {
-           $return = $this->results;
+        $return = $this->results;
         $this->clean();
+
         return $return;
     }
 
@@ -58,17 +55,17 @@ class OpenNfeio
     {
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', $this->url, [
-            'query' => ['api_key' => $this->apiKey
-            ]
+            'query' => ['api_key' => $this->apiKey,
+            ],
         ]);
 
         if ($res->hasHeader('Content-Length')) {
             $this->statusCode = $res->getStatusCode();
             $this->contentType = $res->getHeaderLine('content-type');
+
             return json_decode($res->getBody(), true);
         }
-        throw new Exception("Invalid Function");
-
+        throw new Exception('Invalid Function');
     }
 
     public function clean()
