@@ -10,7 +10,7 @@ Api de interação com a open.nfe.io para PHP
 ### Usando [Composer](http://getcomposer.org/)
 
 ```bash
-composer require convenia/open-nfeio-api
+composer require convenia/open-nfeio
 ```
 
 ## Exemplos de Uso
